@@ -62,6 +62,7 @@ public class Bird extends GameObject {
                 this.setVelocity(Constants.BIRD_FLY_VECTOR);
                 this.animator.transitionAndBack("Flap");
                 timeSinceLastFlap = 0;
+                this.game.gameSounds.playSound(Constants.BIRD_FLAP_SOUND, 0);
             }
         }
     }

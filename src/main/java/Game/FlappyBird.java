@@ -54,6 +54,10 @@ public class FlappyBird extends Game {
         try {
             this.spriteMap = Utilities.processSpriteSheet(Constants.SPRITE_SHEET,
                     Constants.SPRITE_MAP);
+
+            this.gameSounds.loadSounds(Constants.ALL_SOUNDS);
+            this.gameSounds.playSound(Constants.BACKGROUND_SOUND, -1);
+
             ground = new ScrollingBackground(Constants.GROUND_START_X,
                     Constants.GROUND_START_Y, Constants.GROUND_WIDTH, Constants.GROUND_HEIGHT, spriteMap.get("Ground"),
                     Constants.GROUND_SPEED, Constants.GROUND_TYPE);
@@ -133,7 +137,7 @@ public class FlappyBird extends Game {
     public void update(int dt) {
         super.update(dt);
 
-        if (dt > 0 && isStarted) {
+        if (dt > 0 && isStarted && !bird.isDead()) {
 
             // Check Collisions
             if (ground.getRectangle().intersects(bird.getRectangle())) {
@@ -163,6 +167,7 @@ public class FlappyBird extends Game {
             for (GameObject o : this.gameObjects.getObjectsOfType("Coin")) {
                 if (o.getRectangle().intersects(bird.getRectangle())) {
                     score.increment(Constants.COIN_SCORE);
+                    this.gameSounds.playSound(Constants.COIN_SOUND, 0);
                     this.gameObjects.remove(o);
                 }
             }
@@ -179,6 +184,7 @@ public class FlappyBird extends Game {
     }
 
     private void gameOver() {
+        this.gameSounds.playSound(Constants.BIRD_DEAD_SOUND, 0);
         ground.stop();
         sky.stop();
         bird.die();

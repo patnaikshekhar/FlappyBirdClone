@@ -26,7 +26,7 @@ public abstract class GameObject {
     protected int zOrder;
 
     // Game Manager
-    protected GameObjectManager gameManager;
+    protected Game game;
 
     public abstract void update(int dt);
     public abstract void draw(Graphics2D g);
@@ -106,12 +106,12 @@ public abstract class GameObject {
 
     public abstract String getType();
 
-    public GameObjectManager getGameObjectManager() {
-        return gameManager;
+    public Game getGame() {
+        return game;
     }
 
-    public void setGameObjectManager(GameObjectManager gameManager) {
-        this.gameManager = gameManager;
+    public void setGame(Game game) {
+        this.game = game;
     }
 
     public int getzOrder() {

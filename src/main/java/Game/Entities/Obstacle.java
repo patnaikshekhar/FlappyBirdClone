@@ -29,6 +29,9 @@ public class Obstacle extends GameObject {
     public void update(int dt) {
         if (isMoving) {
             this.x += (vy * dt);
+            if (this.x < -width) {
+                this.game.gameObjects.remove(this);
+            }
         }
     }
 

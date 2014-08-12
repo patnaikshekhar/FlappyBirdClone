@@ -46,7 +46,7 @@ public class Constants {
     public static final Vector2 GRAVITY_VECTOR = new Vector2(0, 0.01);
     public static final int BIRD_FLY_KEY = KeyEvent.VK_SPACE;
     public static final Vector2 BIRD_FLY_VECTOR = new Vector2(0, -0.2);
-    public static final int BIRD_FLAP_COOL_DOWN_TIME = 300;
+    public static final int BIRD_FLAP_COOL_DOWN_TIME = 100;
     public static final int BIRD_ZORDER = 1;
 
     // Ground Constants
@@ -119,4 +119,12 @@ public class Constants {
     public static final Color SCORE_COLOR = Color.BLACK;
     public static final Font SCORE_FONT = new Font("Arial", Font.BOLD, 26);
     public static final int SCORE_ZORDER = 2;
+
+    // Sound Constants
+    public static final String BACKGROUND_SOUND = "/sounds/Background.wav";
+    public static final String BIRD_DEAD_SOUND = "/sounds/Bird_Dead.wav";
+    public static final String COIN_SOUND = "/sounds/Coin.wav";
+    public static final String BIRD_FLAP_SOUND = "/sounds/Bird_Flap.wav";
+    public static final String[] ALL_SOUNDS = new String[]{ BACKGROUND_SOUND, BIRD_DEAD_SOUND, COIN_SOUND,
+            BIRD_FLAP_SOUND };
 }

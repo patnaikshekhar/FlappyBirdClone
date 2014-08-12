@@ -13,11 +13,11 @@ public abstract class Game {
     protected int width;
     protected int height;
 
-    protected GameObjectManager gameObjects;
-    protected SoundManager gameSounds;
+    public GameObjectManager gameObjects;
+    public SoundManager gameSounds;
 
     public Game() {
-        gameObjects = new GameObjectManager();
+        gameObjects = new GameObjectManager(this);
         gameSounds = new SoundManager();
     }
 

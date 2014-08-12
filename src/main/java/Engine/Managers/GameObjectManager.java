@@ -1,6 +1,7 @@
 package Engine.Managers;
 
 import Engine.GameObject;
+import Engine.Game;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -14,13 +15,16 @@ import java.util.List;
 public class GameObjectManager {
 
     private List<GameObject> objects;
+    private Game game;
 
-    public GameObjectManager() {
+    public GameObjectManager(Game game) {
         objects = new ArrayList<GameObject>();
+        this.game = game;
     }
 
     public void update(int dt) {
-        for (GameObject object : objects) {
+        List<GameObject> objectsCopied = (List<GameObject>)((ArrayList<GameObject>) objects).clone();
+        for (GameObject object : objectsCopied) {
             object.update(dt);
         }
     }
@@ -50,7 +54,7 @@ public class GameObjectManager {
         objects.add(object);
 
         // Set the parent game manager on the object
-        object.setGameObjectManager(this);
+        object.setGame(this.game);
 
         sortObjects();
     }
